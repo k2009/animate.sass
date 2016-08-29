@@ -1,0 +1,24 @@
+.translateUp{
+	animation-name: translateUp;
+	animation-duration: 0.75s;
+	-webkit-animation-name: translateUp;
+	-webkit-animation-duration: 0.75s;
+}
+
+@-webkit-keyframes translateUp{
+	0%{
+		-webkit-transform: translateY(0);
+	}
+	100%{
+		-webkit-transform: translateY(-100px);
+	}
+}
+
+@keyframes translateUp{
+	0%{
+		transform: translateY(0);
+	}
+	100%{
+		transform: translateY(-100px);
+	}
+}
