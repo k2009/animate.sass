@@ -3,18 +3,11 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="baidu-site-verification" content="BG1FptcUgu" />
-		<title>酷鱼网 ｜ CFS.ANIMATE.CSS</title>
-		<meta name="description" content="css3的ANIMATE运动库 | 引入css即可实现运动效果">
+		<title>ANIMATE-SASS 方法库</title>
+		<meta name="description" content="SCSS-css3的ANIMATE运动方法库 | 调用方法即可运行">
         <meta name="keywords" content="运动,animate,js,html5,css3">
 		<!-- 百度统计 -->
 		<script>
-		var _hmt = _hmt || [];
-		(function() {
-		  var hm = document.createElement("script");
-		  hm.src = "//hm.baidu.com/hm.js?d45b7e37ad120a6d23f44649bd9b80c3";
-		  var s = document.getElementsByTagName("script")[0]; 
-		  s.parentNode.insertBefore(hm, s);
-		})();
 		</script>
 
 		<style type="text/css">
@@ -32,6 +25,27 @@
 			.box .content{width: 100%;height: 140px;line-height: 100px;text-align: center;cursor: pointer;}
 			.box .content span{display: block;}
 			.box .title{width: 100%;height: 40px;line-height: 40px;text-align: center;font-size: 12px;color:#666;}
+			.list{
+				position: relative;
+			}
+			.list:hover .getCode{
+				display: block;
+				cursor: pointer;
+			}
+			.getCode:hover{
+				background-color: #333;
+			}
+			.getCode{
+				display: none;
+				position: absolute;
+				right: 5px;
+				top: 5px;
+				font-size: 12px;
+				background-color: #ccc;
+				border-radius: 4px;
+				color: #fff;
+				padding: 2px 5px;
+			}
 		</style>
 
 		<link rel="stylesheet" type="text/css" href="Animate.css">
@@ -79,7 +93,7 @@
 				for(var name in objJson){
 					$('#box').append('<div class="category">' + name + '</div>');
 					for(var i = 0; i < objJson[name].length; i++){
-						var objHtml = '<div class="list"><div class="title"><span>' + objJson[name][i] + '</span></div><div class="content" style="color:' + randomRGB() + '"><span>CFS.ANIMATE.CSS</span></div></div>';
+						var objHtml = '<div class="list"><div class="getCode">获取代码</div><div class="title"><span>' + objJson[name][i] + '</span></div><div class="content" style="color:' + randomRGB() + '"><span>CFS.ANIMATE.CSS</span></div></div>';
 						$('#box').append(objHtml);
 					}
 				}
@@ -94,14 +108,14 @@
 	</head>
 	<body>
 		<div class="wrap">
-			<span class="btnBar"><h1 class="bounceIn">CFS.ANIMATE.CSS</h1><p class="bounceIn">bounceIn</p></span>
-			<span class="btnBar"><h4 class="bounceIn">换一换</h4></span>
+			<span class="btnBar"><h1 class="cfs_foldInLeft">CFS.ANIMATE.CSS</h1><p class="cfs_rotateInUpLeft">🐱🐱🐱🐱🐱🐱</p></span>
+			<span class="btnBar"><h4 class="cfs_bounce cfs_delay10">换一换</h4></span>
 			<span class="bounceIn">css3运动库 | 引入css即可实现运动效果</span>
 			<hr>
 			<span class="bounceIn">
-				<a href="/download/CFS.Animate.min.css">Download CFS.Animate.css</a>
+				<a href="https://github.com/xiaok1990/animate.sass">Download Animate.scss</a>
 				&nbsp;or&nbsp; 
-				<a href="https://github.com/coolfishstudio/cfs.animate.css">View on GitHub</a>
+				<a href="https://github.com/xiaok1990/animate.sass/blob/master/Animate.scss">View on GitHub</a>
 			</span>
 		</div>
 		<div class="box" id="box">	
