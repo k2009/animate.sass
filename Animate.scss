@@ -27,7 +27,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
 }
 @mixin transform($str) {
     @include incompatible(transform,$str);
-}                              
+}
 @mixin transform-origin($str) {
     @include incompatible(transform-origin,$value:#{$str});
 }
