@@ -3,7 +3,9 @@ animate.scss
 
 css3-sass运动基础库
 
-基于[酷鱼网](https://github.com/coolfishstudio)css3运动样式库
+动画实现基于[酷鱼网](https://github.com/coolfishstudio)css3运动样式库
+
+感谢[段冰洋](https://github.com/duanbingyang)对本项目做出的贡献
 
 >2016年08月29日15:47
 
