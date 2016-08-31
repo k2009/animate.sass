@@ -1,0 +1,12 @@
+
+@import "Animate.scss";
+
+.test{
+	
+}
+.test_enter{
+	@include cfs_fadeInLeft;
+}
+.test_leave{
+	@include cfs_fadeInLeft;
+}

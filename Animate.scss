@@ -9,10 +9,7 @@
 
 $webkit: true;
 $moz: false;
-$ms: false;
 $o: false;
-
-
 
 $array_keyframes:keyframes_name1 keyframes_name2;
 
@@ -20,7 +17,6 @@ $array_keyframes:keyframes_name1 keyframes_name2;
 @mixin incompatible($key,$value) {
     @if $webkit{-webkit-#{$key}: #{$value}};
     @if $moz{-moz-#{$key}: #{$value}};
-    @if $ms{-ms-#{$key}: #{$value}};
     @if $o{-o-#{$key}: #{$value}};
     #{$key}: #{$value};
 
@@ -66,11 +62,6 @@ $array_keyframes:keyframes_name1 keyframes_name2;
                 @content;
             }
         }
-        @if $ms{
-            @-ms-keyframes #{$str} {
-                @content;
-            }
-        }
         @if $o{
             @-o-keyframes #{$str} {
                 @content;
@@ -86,11 +77,9 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         // }
     }
 }
-
 //具体运动方法定义
-
-
-.cfs_rotate30deg{
+@mixin cfs_rotate30deg{
+    display:getStyle();
     @include animation('cfs_rotate30deg 0.75s');
     @include keyframes(cfs_rotate30deg) {
         0%{
@@ -102,7 +91,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_rotate45deg{
+@mixin cfs_rotate45deg{
     @include animation('cfs_rotate45deg 0.75s');
     @include keyframes(cfs_rotate45deg) {
         0%{
@@ -114,7 +103,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_rotate90deg{
+@mixin cfs_rotate90deg{
     @include animation('cfs_rotate90deg 0.75s');
     @include keyframes(cfs_rotate90deg) {
         0%{
@@ -126,9 +115,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-
-
-.cfs_rotateX60deg{
+@mixin cfs_rotateX60deg{
     @include animation('cfs_rotateX60deg 0.75s');
     @include keyframes(cfs_rotateX60deg) {
         0%{
@@ -140,7 +127,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_rotateY60deg{
+@mixin cfs_rotateY60deg{
     @include animation('cfs_rotateY60deg 0.75s');
 
     @include keyframes(cfs_rotateX60deg) {
@@ -153,7 +140,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_scale2{
+@mixin cfs_scale2{
     @include animation('cfs_scale2 0.75s');
 
     @include keyframes(cfs_scale2) {
@@ -166,7 +153,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_scaleX2{
+@mixin cfs_scaleX2{
     @include animation('cfs_scaleX2 0.75s');
     @include keyframes(cfs_scaleX2) {
         0%{
@@ -180,7 +167,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
 }
 
 
-.cfs_scaleY2{
+@mixin cfs_scaleY2{
     @include animation('cfs_scaleY2 0.75s');
     @include keyframes(cfs_scaleY2) {
         0%{
@@ -192,7 +179,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_skew30deg{
+@mixin cfs_skew30deg{
     @include animation('cfs_skew30deg 0.75s');
     @include keyframes(cfs_skew30deg) {
         0%{
@@ -204,7 +191,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_skewX30deg{
+@mixin cfs_skewX30deg{
     @include animation('cfs_skewX30deg 0.75s');
     @include keyframes(cfs_skewX30deg) {
         0%{
@@ -216,7 +203,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_skewY30deg{
+@mixin cfs_skewY30deg{
     @include animation('cfs_skewY30deg 0.75s');
     @include keyframes(cfs_skewY30deg) {
         0%{
@@ -228,7 +215,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_translateDown{
+@mixin cfs_translateDown{
     @include animation('cfs_translateDown 0.75s');
     @include keyframes(cfs_translateDown) {
         0%{
@@ -240,7 +227,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_translateLeft{
+@mixin cfs_translateLeft{
     @include animation('cfs_translateLeft 0.75s');
     @include keyframes(cfs_translateLeft) {
         0%{
@@ -252,7 +239,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_translateRight{
+@mixin cfs_translateRight{
     @include animation('cfs_translateRight 0.75s');
     @include keyframes(cfs_translateRight) {
         0%{
@@ -265,7 +252,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 
 }
-.cfs_translateUp{
+@mixin cfs_translateUp{
     @include animation('cfs_translateUp 0.75s');
     @include keyframes(cfs_translateUp) {
         0%{
@@ -277,7 +264,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_beat{
+@mixin cfs_beat{
     @include animation('cfs_beat 0.75s');
     @include transform-origin('center bottom');
     @include keyframes(cfs_beat) {
@@ -299,7 +286,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_bounce{
+@mixin cfs_bounce{
     @include animation('cfs_bounce 0.75s');
     @include keyframes(cfs_bounce) {
         0%, 50%, 100% {
@@ -311,7 +298,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_emphasize{
+@mixin cfs_emphasize{
     @include animation('cfs_emphasize 0.75s');
     @include keyframes(cfs_emphasize) {
         0%, 100%{
@@ -328,7 +315,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_flash {
+@mixin cfs_flash {
     @include animation('cfs_flash 0.75s');
     @include keyframes(cfs_flash) {
         0%, 50%, 100% {
@@ -340,7 +327,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_nod {
+@mixin cfs_nod {
     @include animation('cfs_nod 0.75s');
     @include keyframes(cfs_nod) {
         0%, 100% {
@@ -355,7 +342,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_pulse {
+@mixin cfs_pulse {
     @include animation('cfs_pulse 0.75s');
     @include keyframes(cfs_pulse) {
         0%, 100% {
@@ -366,7 +353,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_rubberBand {
+@mixin cfs_rubberBand {
     @include animation('cfs_rubberBand 0.75s');
     @include keyframes(cfs_rubberBand) {
         0%, 100% {
@@ -390,7 +377,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_shake {
+@mixin cfs_shake {
     @include animation('cfs_shake 0.75s');
     @include keyframes(cfs_shake) {
         0%, 100% {
@@ -406,7 +393,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
 }
 
 
-.cfs_swing {
+@mixin cfs_swing {
     @include animation('cfs_swing 0.75s');
     @include keyframes(cfs_swing) {
         20%{
@@ -426,7 +413,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_wobble {
+@mixin cfs_wobble {
     @include animation('cfs_wobble 0.75s');
     @include keyframes(cfs_wobble) {
         15%{
@@ -450,7 +437,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_bounceIn {
+@mixin cfs_bounceIn {
     @include animation('cfs_bounceIn 0.75s');
     @include keyframes(cfs_bounceIn) {
 
@@ -477,7 +464,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_bounceInDown {
+@mixin cfs_bounceInDown {
     @include animation('cfs_bounceInDown 0.75s');
     @include keyframes(cfs_bounceInDown) {
         0%{
@@ -500,7 +487,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_bounceInLeft {
+@mixin cfs_bounceInLeft {
     @include animation('cfs_bounceInLeft 0.75s');
     @include keyframes(cfs_bounceInLeft) {
         0%{
@@ -524,7 +511,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
 }
 
 
-.cfs_bounceInRight {
+@mixin cfs_bounceInRight {
     @include animation('cfs_bounceInRight 0.75s');
     @include keyframes(cfs_bounceInRight) {
         0%{
@@ -549,7 +536,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
 }
 
 
-.cfs_bounceInUp{
+@mixin cfs_bounceInUp{
 
     @include animation('cfs_bounceInUp 0.75s');
     @include keyframes(cfs_bounceInUp) {
@@ -573,7 +560,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_bounceOut{
+@mixin cfs_bounceOut{
 
     @include animation('cfs_bounceOut 0.75s');
     @include keyframes(cfs_bounceOut) {
@@ -597,7 +584,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_bounceOutDown{
+@mixin cfs_bounceOutDown{
 
     @include animation('cfs_bounceOutDown 0.75s');
     @include keyframes(cfs_bounceOutDown) {
@@ -623,7 +610,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
 }
 
 
-.cfs_bounceOutLeft{
+@mixin cfs_bounceOutLeft{
 
     @include animation('cfs_bounceOutLeft 0.75s');
     @include keyframes(cfs_bounceOutLeft) {
@@ -647,7 +634,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_bounceOutRight{
+@mixin cfs_bounceOutRight{
 
     @include animation('cfs_bounceOutRight 0.75s');
     @include keyframes(cfs_bounceOutRight) {
@@ -673,7 +660,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
 }
 
 
-.cfs_bounceOutUp{
+@mixin cfs_bounceOutUp{
 
     @include animation('cfs_bounceOutUp 0.75s');
     @include keyframes(cfs_bounceOutUp) {
@@ -699,7 +686,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
 }
 
 
-.cfs_curveIn {
+@mixin cfs_curveIn {
     @include incompatible(animation-timing-function, ease-out);
 
     @include animation('cfs_curveIn 0.75s');
@@ -718,7 +705,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_curveInDown {
+@mixin cfs_curveInDown {
     @include incompatible(animation-timing-function, ease-out);
     @include animation('cfs_curveInDown 0.75s');
     @include keyframes(cfs_curveInDown) {
@@ -736,7 +723,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_curveInLeft {
+@mixin cfs_curveInLeft {
     @include incompatible(animation-timing-function, ease-out);
     @include animation('cfs_curveInLeft 0.75s');
     @include keyframes(cfs_curveInLeft) {
@@ -755,7 +742,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
 }
 
 
-.cfs_curveInRight {
+@mixin cfs_curveInRight {
     @include incompatible(animation-timing-function, ease-out);
     @include animation('cfs_curveInRight 0.75s');
     @include keyframes(cfs_curveInRight) {
@@ -773,7 +760,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_curveInUp {
+@mixin cfs_curveInUp {
     @include incompatible(animation-timing-function, ease-out);
     @include animation('cfs_curveInUp 0.75s');
     @include keyframes(cfs_curveInUp) {
@@ -791,7 +778,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_curveOut {
+@mixin cfs_curveOut {
     @include incompatible(animation-timing-function, ease-out);
     @include animation('cfs_curveOut 0.75s');
     @include keyframes(cfs_curveOut) {
@@ -809,7 +796,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_curveOutDown {
+@mixin cfs_curveOutDown {
     @include incompatible(animation-timing-function, ease-out);
     @include animation('cfs_curveOutDown 0.75s');
     @include keyframes(cfs_curveOutDown) {
@@ -826,7 +813,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_curveOutLeft {
+@mixin cfs_curveOutLeft {
     @include incompatible(animation-timing-function, ease-out);
     @include animation('cfs_curveOutLeft 0.75s');
     @include keyframes(cfs_curveOutLeft) {
@@ -844,7 +831,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_curveOutRight {
+@mixin cfs_curveOutRight {
     @include incompatible(animation-timing-function, ease-out);
     @include animation('cfs_curveOutRight 0.75s');
     @include keyframes(cfs_curveOutRight) {
@@ -862,7 +849,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_curveOutUp {
+@mixin cfs_curveOutUp {
     @include incompatible(animation-timing-function, ease-out);
     @include animation('cfs_curveOutUp 0.75s');
     @include keyframes(cfs_curveOutUp) {
@@ -880,7 +867,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_fadeIn{
+@mixin cfs_fadeIn{
     @include animation('cfs_fadeIn 0.75s');
     @include keyframes(cfs_fadeIn) {
         0%{
@@ -894,7 +881,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_fadeInDown{
+@mixin cfs_fadeInDown{
     @include animation('cfs_fadeInDown 0.75s');
     @include keyframes(cfs_fadeInDown) {
         0%{
@@ -907,7 +894,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_fadeInLeft{
+@mixin cfs_fadeInLeft{
     @include animation('cfs_fadeInLeft 0.75s');
     @include keyframes(cfs_fadeInLeft) {
         0%{
@@ -921,7 +908,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_fadeInRight{
+@mixin cfs_fadeInRight{
     @include animation('cfs_fadeInRight 0.75s');
     @include keyframes(cfs_fadeInRight) {
         0%{
@@ -935,7 +922,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_fadeInUp{
+@mixin cfs_fadeInUp{
     @include animation('cfs_fadeInUp 0.75s');
     @include keyframes(cfs_fadeInUp) {
         0%{
@@ -949,7 +936,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_fadeOut{
+@mixin cfs_fadeOut{
     @include animation('cfs_fadeOut 0.75s');
     @include keyframes(cfs_fadeOut) {
         10%{
@@ -962,7 +949,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_fadeOutDown{
+@mixin cfs_fadeOutDown{
     @include animation('cfs_fadeOutDown 0.75s');
     @include keyframes(cfs_fadeOutDown) {
         10%{
@@ -975,7 +962,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_fadeOutLeft{
+@mixin cfs_fadeOutLeft{
     @include animation('cfs_fadeOutLeft 0.75s');
     @include keyframes(cfs_fadeOutLeft) {
         10%{
@@ -988,7 +975,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_fadeOutRight{
+@mixin cfs_fadeOutRight{
     @include animation('cfs_fadeOutRight 0.75s');
     @include keyframes(cfs_fadeOutRight) {
         10%{
@@ -1001,7 +988,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_fadeOutUp{
+@mixin cfs_fadeOutUp{
     @include animation('cfs_fadeOutUp 0.75s');
     @include keyframes(cfs_fadeOutUp) {
         10%{
@@ -1016,7 +1003,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
 }
 
 
-.cfs_flipFadeX {
+@mixin cfs_flipFadeX {
     @include animation('cfs_flipFadeX 0.75s');
     @include keyframes(cfs_flipFadeX) {
         0%{
@@ -1027,7 +1014,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_flipFadeY {
+@mixin cfs_flipFadeY {
     @include animation('cfs_flipFadeY 0.75s');
     @include keyframes(cfs_flipFadeY) {
         0%{
@@ -1038,7 +1025,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_flipFlyX {
+@mixin cfs_flipFlyX {
     @include animation('cfs_flipFlyX 0.75s');
     @include keyframes(cfs_flipFlyX) {
         0%{
@@ -1059,7 +1046,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_flipFlyY {
+@mixin cfs_flipFlyY {
 
     @include animation('cfs_flipFlyY 0.75s');
     @include keyframes(cfs_flipFlyY) {
@@ -1081,7 +1068,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_flipInX {
+@mixin cfs_flipInX {
 
     @include animation('cfs_flipInX 0.75s');
     @include keyframes(cfs_flipInX) {
@@ -1097,7 +1084,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_flipInY {
+@mixin cfs_flipInY {
 
     @include animation('cfs_flipInY 0.75s');
     @include keyframes(cfs_flipInY) {
@@ -1113,7 +1100,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_flipOutX {
+@mixin cfs_flipOutX {
 
     @include animation('cfs_flipOutX 0.75s');
     @include keyframes(cfs_flipOutX) {
@@ -1130,7 +1117,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
 }
 
 
-.cfs_flipOutY {
+@mixin cfs_flipOutY {
 
     @include animation('cfs_flipOutY 0.75s');
     @include keyframes(cfs_flipOutY) {
@@ -1146,7 +1133,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_flipX {
+@mixin cfs_flipX {
 
     @include animation('cfs_flipX 0.75s');
     @include keyframes(cfs_flipX) {
@@ -1169,7 +1156,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_flipY {
+@mixin cfs_flipY {
 
     @include animation('cfs_flipY 0.75s');
     @include keyframes(cfs_flipY) {
@@ -1192,7 +1179,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_lightSpeedIn{
+@mixin cfs_lightSpeedIn{
 
     @include animation('cfs_lightSpeedIn 0.5s');
     @include keyframes(cfs_lightSpeedIn) {
@@ -1214,7 +1201,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     @include incompatible(animation-timing-function, ease-out);
 }
 
-.cfs_lightSpeedInDown{
+@mixin cfs_lightSpeedInDown{
     @include incompatible(animation-timing-function, ease-out);
 
     @include animation('cfs_lightSpeedInDown 0.75s');
@@ -1235,7 +1222,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_lightSpeedInLeft{
+@mixin cfs_lightSpeedInLeft{
     @include incompatible(animation-timing-function, ease-out);
 
     @include animation('cfs_lightSpeedInLeft 0.75s');
@@ -1256,7 +1243,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_lightSpeedInRight{
+@mixin cfs_lightSpeedInRight{
     @include incompatible(animation-timing-function, ease-out);
 
     @include animation('cfs_lightSpeedInRight 0.75s');
@@ -1278,7 +1265,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_lightSpeedInUp{
+@mixin cfs_lightSpeedInUp{
     @include incompatible(animation-timing-function, ease-out);
 
     @include animation('cfs_lightSpeedInUp 0.75s');
@@ -1299,7 +1286,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_lightSpeedOut{
+@mixin cfs_lightSpeedOut{
     @include incompatible(animation-timing-function, ease-in);
 
     @include animation('cfs_lightSpeedOut 0.5s');
@@ -1318,7 +1305,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_lightSpeedOutDown{
+@mixin cfs_lightSpeedOutDown{
     @include incompatible(animation-timing-function, ease-in);
 
     @include animation('cfs_lightSpeedOutDown 0.75s');
@@ -1333,7 +1320,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_lightSpeedOutLeft{
+@mixin cfs_lightSpeedOutLeft{
     @include incompatible(animation-timing-function, ease-in);
     @include incompatible(animation-duration, 0.5s);
 
@@ -1348,7 +1335,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 } 
-.cfs_lightSpeedOutRight{
+@mixin cfs_lightSpeedOutRight{
     @include incompatible(animation-timing-function, ease-in);
     @include incompatible(animation-duration, 0.5s);
 
@@ -1364,7 +1351,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 } 
 
-.cfs_lightSpeedOutUp{
+@mixin cfs_lightSpeedOutUp{
     @include incompatible(animation-timing-function, ease-in);
 
     @include animation('cfs_lightSpeedOutUp 0.75s');
@@ -1379,7 +1366,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
  
-.cfs_rotateIn{
+@mixin cfs_rotateIn{
 
     @include animation('cfs_rotateIn 0.75s');
     @include keyframes(cfs_rotateIn) {
@@ -1393,7 +1380,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 } 
-.cfs_rotateInDownLeft{
+@mixin cfs_rotateInDownLeft{
 
     @include animation('cfs_rotateInDownLeft 0.75s');
     @include keyframes(cfs_rotateInDownLeft) {
@@ -1409,7 +1396,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 } 
-.cfs_rotateInDownRight{
+@mixin cfs_rotateInDownRight{
 
     @include animation('cfs_rotateInDownRight 0.75s');
     @include keyframes(cfs_rotateInDownRight) {
@@ -1426,7 +1413,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 } 
 
-.cfs_rotateInUpLeft{
+@mixin cfs_rotateInUpLeft{
 
     @include animation('cfs_rotateInUpLeft 0.75s');
     @include keyframes(cfs_rotateInUpLeft) {
@@ -1442,7 +1429,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 } 
-.cfs_rotateInUpRight{
+@mixin cfs_rotateInUpRight{
 
     @include animation('cfs_rotateInUpRight 0.75s');
     @include keyframes(cfs_rotateInUpRight) {
@@ -1458,7 +1445,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 } 
-.cfs_rotateOut{
+@mixin cfs_rotateOut{
 
     @include animation('cfs_rotateOut 0.75s');
     @include keyframes(cfs_rotateOut) {
@@ -1472,7 +1459,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 } 
-.cfs_rotateOutDownLeft{
+@mixin cfs_rotateOutDownLeft{
 
     @include animation('cfs_rotateOutDownLeft 0.75s');
     @include keyframes(cfs_rotateOutDownLeft) {
@@ -1488,7 +1475,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 } 
-.cfs_rotateOutDownRight{
+@mixin cfs_rotateOutDownRight{
 
     @include animation('cfs_rotateOutDownRight 0.75s');
     @include keyframes(cfs_rotateOutDownRight) {
@@ -1504,7 +1491,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 } 
-.cfs_rotateOutUpLeft{
+@mixin cfs_rotateOutUpLeft{
 
     @include animation('cfs_rotateOutUpLeft 0.75s');
     @include keyframes(cfs_rotateOutUpLeft) {
@@ -1520,7 +1507,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 } 
-.cfs_rotateOutUpRight{
+@mixin cfs_rotateOutUpRight{
 
     @include animation('cfs_rotateOutUpRight 0.75s');
     @include keyframes(cfs_rotateOutUpRight) {
@@ -1536,7 +1523,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 } 
-.cfs_trunBottom {
+@mixin cfs_trunBottom {
     @include incompatible(transform-origin, left bottom);
 
     @include animation('cfs_trunBottom 0.75s');
@@ -1561,7 +1548,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 } 
-.cfs_trunInBottomDown {
+@mixin cfs_trunInBottomDown {
     @include incompatible(transform-origin, right bottom);
 
     @include animation('cfs_trunInBottomDown 0.75s');
@@ -1578,7 +1565,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 } 
 
-.cfs_trunInBottomUp {
+@mixin cfs_trunInBottomUp {
     @include incompatible(transform-origin, right bottom);
 
     @include animation('cfs_trunInBottomUp 0.75s');
@@ -1595,7 +1582,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 } 
 
-.cfs_trunInLeftDown {
+@mixin cfs_trunInLeftDown {
     @include incompatible(transform-origin, left top);
 
     @include animation('cfs_trunInLeftDown 0.75s');
@@ -1612,7 +1599,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 } 
 
-.cfs_trunInLeftUp {
+@mixin cfs_trunInLeftUp {
     @include incompatible(transform-origin, left top);
 
     @include animation('cfs_trunInLeftUp 0.75s');
@@ -1629,7 +1616,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 } 
 
-.cfs_trunInRightDown {
+@mixin cfs_trunInRightDown {
     @include incompatible(transform-origin,right top);
 
     @include animation('cfs_trunInRightDown 0.75s');
@@ -1646,7 +1633,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 } 
 
-.cfs_trunInRightUp {
+@mixin cfs_trunInRightUp {
     @include incompatible(transform-origin,right top);
 
     @include animation('cfs_trunInRightUp 0.75s');
@@ -1662,7 +1649,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 } 
-.cfs_trunInTopDown {
+@mixin cfs_trunInTopDown {
     @include incompatible(transform-origin,right top);
 
     @include animation('cfs_trunInTopDown 0.75s');
@@ -1679,7 +1666,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 } 
 
-.cfs_trunInTopUp {
+@mixin cfs_trunInTopUp {
     @include incompatible(transform-origin,right top);
 
     @include animation('cfs_trunInTopUp 0.75s');
@@ -1696,7 +1683,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
  
-.cfs_trunLeft {
+@mixin cfs_trunLeft {
     @include incompatible(transform-origin, left top);
 
     @include animation('cfs_trunLeft 0.75s');
@@ -1717,7 +1704,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 } 
-.cfs_trunOutBottomDown {
+@mixin cfs_trunOutBottomDown {
     @include incompatible(transform-origin, right bottom);
 
     @include animation('cfs_trunOutBottomDown 0.75s');
@@ -1733,7 +1720,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 } 
-.cfs_trunOutBottomUp {
+@mixin cfs_trunOutBottomUp {
     @include incompatible(transform-origin, right bottom);
 
     @include animation('cfs_trunOutBottomUp 0.75s');
@@ -1749,7 +1736,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 } 
-.cfs_trunOutLeftDown {
+@mixin cfs_trunOutLeftDown {
     @include incompatible(transform-origin, left top);
 
     @include animation('cfs_trunOutLeftDown 0.75s');
@@ -1765,7 +1752,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 } 
-.cfs_trunOutLeftUp {
+@mixin cfs_trunOutLeftUp {
     @include incompatible(transform-origin, left top);
 
     @include animation('cfs_trunOutLeftUp 0.75s');
@@ -1781,7 +1768,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-.cfs_trunOutRightDown {
+@mixin cfs_trunOutRightDown {
     @include incompatible(transform-origin,right top);
 
     @include animation('cfs_trunOutRightDown 0.75s');
@@ -1798,7 +1785,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_trunOutRightUp {
+@mixin cfs_trunOutRightUp {
     @include incompatible(transform-origin,right top);
 
     @include animation('cfs_trunOutRightUp 0.75s');
@@ -1815,7 +1802,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_trunOutTopDown {
+@mixin cfs_trunOutTopDown {
     @include incompatible(transform-origin,right top);
 
     @include animation('cfs_trunOutTopDown 0.75s');
@@ -1832,7 +1819,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_trunOutTopUp {
+@mixin cfs_trunOutTopUp {
     @include incompatible(transform-origin,right top);
 
     @include animation('cfs_trunOutTopUp 0.75s');
@@ -1850,7 +1837,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
 }
 
 
-.cfs_trunRight {
+@mixin cfs_trunRight {
     @include incompatible(transform-origin,right top);
 
     @include animation('cfs_trunRight 0.75s');
@@ -1873,7 +1860,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
 }
 
 
-.cfs_trunTop {
+@mixin cfs_trunTop {
     @include incompatible (transform-origin,left top);
 
     @include animation('cfs_trunTop 0.75s');
@@ -1895,7 +1882,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
     }
 }
 
-.cfs_foldIn {
+@mixin cfs_foldIn {
     @include incompatible(animation-timing-function, ease-out);
 
     @include animation('cfs_foldIn 0.75s');
@@ -1915,7 +1902,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
 }
 
 
-.cfs_foldInDown {
+@mixin cfs_foldInDown {
     @include incompatible(animation-timing-function, ease-out);
 
     @include animation('cfs_foldInDown 0.75s');
@@ -1935,7 +1922,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
 }
 
 
-.cfs_foldInLeft {
+@mixin cfs_foldInLeft {
     @include incompatible(animation-timing-function, ease-out);
 
     @include animation('cfs_bounceInLeft 0.75s');
@@ -1955,7 +1942,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
 }
 
 
-.cfs_foldInRight {
+@mixin cfs_foldInRight {
     @include incompatible(animation-timing-function, ease-out);
 
     @include animation('cfs_foldInRight 0.75s');
@@ -1975,7 +1962,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
 }
 
 
-.cfs_foldInUp {
+@mixin cfs_foldInUp {
     @include incompatible(animation-timing-function, ease-out);
 
     @include animation('cfs_foldInUp 0.75s');
@@ -1995,7 +1982,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
 }
 
 
-.cfs_foldOut {
+@mixin cfs_foldOut {
     @include incompatible(animation-timing-function, ease-out);
 
     @include animation('cfs_foldOut 0.75s');
@@ -2015,7 +2002,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
 }
 
 
-.cfs_foldOutDown {
+@mixin cfs_foldOutDown {
     @include incompatible(animation-timing-function, ease-out);
 
     @include animation('cfs_foldOutDown 0.75s');
@@ -2035,7 +2022,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
 }
 
 
-.cfs_foldOutLeft {
+@mixin cfs_foldOutLeft {
     @include incompatible(animation-timing-function, ease-out);
 
     @include animation('cfs_foldOutLeft 0.75s');
@@ -2055,7 +2042,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
 }
 
 
-.cfs_foldOutRight {
+@mixin cfs_foldOutRight {
     @include incompatible(animation-timing-function, ease-out);
 
     @include animation('cfs_foldOutRight 0.75s');
@@ -2075,7 +2062,7 @@ $array_keyframes:keyframes_name1 keyframes_name2;
 }
 
 
-.cfs_foldOutUp {
+@mixin cfs_foldOutUp {
     @include incompatible(animation-timing-function, ease-out);
 
     @include animation('cfs_foldOutUp 0.75s');
@@ -2093,121 +2080,55 @@ $array_keyframes:keyframes_name1 keyframes_name2;
         }
     }
 }
-
-
 /*永久运动*/
-.cfs_infinite{
+.ant_forever{
     @include incompatible(animation-iteration-count, infinite);
 }
 
 /*运动停止*/
-.cfs_stop{
+.ant_stop{
     @include incompatible(animation-iteration-count, 0);
 }
 
 /*运动暂停*/
-.cfs_paused{
+.ant_paused{
     @include incompatible(animation-play-state, paused);
 }
 
 /*运动进行*/
-.cfs_start{
+.ant_start{
     @include incompatible(animation-play-state, running);
 }
 
 /*运动暂停 移出进行*/
-.cfs_pausedHover{
+.ant_pausedHover{
     @include incompatible(animation-play-state, paused);
 }
 
-.cfs_pausedHover:hover{
+.ant_pausedHover:hover{
     @include incompatible(animation-play-state, running);
 }
 
 /*运动进行 移出暂停*/
-.cfs_startHover{
+.ant_startHover{
     @include incompatible(animation-play-state, running);
 }
 
-.cfs_startHover:hover{
+.ant_startHover:hover{
     @include incompatible(animation-play-state, paused);
 }
 
 /*运动次数*/
-.cfs_count2{
-    @include incompatible(animation-iteration-count, 2);
+@mixin ant_count($count:2){
+    @include incompatible(animation-iteration-count, $count);
 }
-
-.cfs_count3{
-    @include incompatible(animation-iteration-count, 3);
-}
-
-.cfs_count4{
-    @include incompatible(animation-iteration-count, 4);
-}
-
-.cfs_count5{
-    @include incompatible(animation-iteration-count, 5);
-}
-
-.cfs_count7{
-    @include incompatible(animation-iteration-count, 7);
-}
-
-.cfs_count10{
-    @include incompatible(animation-iteration-count, 10);
-}
-
 /*时间周期*/
-.cfs_time10{
-    @include incompatible(animation-duration, 0.1s);
-}
 
-.cfs_time20{
-    @include incompatible(animation-duration, 0.2s);
-}
-
-.cfs_time50{
-    @include incompatible(animation-duration, 0.5s);
-}
-
-.cfs_time100{
-    @include incompatible(animation-duration, 1s);
-}
-
-.cfs_time120{
-    @include incompatible(animation-duration, 1.2s);
-}
-
-.cfs_time150{
-    @include incompatible(animation-duration, 1.5s);
-}
-
-.cfs_time175{
-    @include incompatible(animation-duration, 1.75s);
-}
-
-.cfs_time200{
-    @include incompatible(animation-duration, 2s);
+@mixin ant_count($time:1000){
+    @include incompatible(animation-duration, #{$time/1000}s);
 }
 
 /*延迟时间*/
-.cfs_delay5{
-    @include incompatible(animation-delay, 0.5s);
-}
-
-.cfs_delay10{
-    @include incompatible(animation-delay, 1s);
-}
-
-.cfs_delay20{
-    @include incompatible(animation-delay, 2s);
-}
-
-.cfs_delay25{
-    @include incompatible(animation-delay, 2.5s);
-}
-
-.cfs_delay50{
-    @include incompatible(animation-delay, 5s);
+@mixin ant_delay($time:1000){
+    @include incompatible(animation-delay, #{$time/1000}s);
 }
