@@ -1,5 +1,5 @@
 {
-  "name": "cfs.animate.css",
+  "name": "animate.css",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -8,11 +8,11 @@
   "main": "app",
   "repository": {
     "type": "git",
-    "url": "git@github.com:coolfishstudio/cfs.animate.css.git"
+    "url": "git@github.com:xiaok1990/animate.sass.git"
   },
   "author": {
-    "name": "coolfishstudio",
-    "email": "461836324@qq.com"
+    "name": "xiaok",
+    "email": "1@xiaok.org"
   },
   "dependencies": {
     "content-disposition": "^0.5.0",
