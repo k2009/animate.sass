@@ -49,8 +49,11 @@
 		</style>
 
 		<link rel="stylesheet" type="text/css" href="Animate.css">
+	  	<link rel="stylesheet" href="./remodal/remodal.css">
+	  	<link rel="stylesheet" href="./remodal/remodal-default-theme.css">
 
 		<script type="text/javascript" src="jquery-1.7.2.js"></script>
+		<script src="./remodal/remodal.js"></script>
 		<script type="text/javascript">
 			$(function(){
 				var timer = null;
@@ -82,6 +85,13 @@
 						_this.find('.content span').addClass(_this.find('.title span').html());
 					}
 				});
+				var inst = $('[data-remodal-id=modal]').remodal();
+				$(document).on('click','.getCode',function(event) {
+					var txt = $(this).parents('.list').find('.title span').html();
+					txt = `@include ${txt};`
+					$('#code').html(txt);
+					inst.open();
+				});
 				/* 随机切换样式 */
 				$('.wrap h4').click(function(){
 					var _randomCss = randomCss();
@@ -108,6 +118,26 @@
 	</head>
 	<body>
 		<div class="wrap">
+
+			<div class="remodal" data-remodal-id="modal" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+				<button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+				<div>
+					<h2 id="Title">页面代码</h2>
+					<p id="modal1Desc">
+					<code id="code" style="
+					-webkit-user-select: text;
+					-moz-user-select: text;
+					-o-user-select: text;
+					user-select: text;
+					">
+					$o: false !default;
+					</code>
+					</p>
+				</div>
+				<br>
+				<!-- <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button> -->
+				<button data-remodal-action="confirm" class="remodal-confirm">复制代码</button>
+			</div>
 			<span class="btnBar"><h1 class="cfs_foldInLeft">CFS.ANIMATE.CSS</h1><p class="cfs_rotateInUpLeft">🐱🐱🐱🐱🐱🐱</p></span>
 			<span class="btnBar"><h4 class="cfs_bounce cfs_delay10">换一换</h4></span>
 			<span class="bounceIn">SASS-css3运动库 | 引入scss即可将运动代码加入自己的css</span>
